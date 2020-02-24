@@ -5,7 +5,7 @@ export class Redis {
     static async initialize(){
         if(global.initializing_redis) return;
         global.initializing_redis = true;
-        global.redis = redis.createClient(6379, '0.0.0.0', {'return_buffers': true});
+        global.redis = redis.createClient(6379, process.env.REDIS_HOST || '0.0.0.0', {'return_buffers': true});
         await new Promise((accept)=>{
             global.redis.on('connect', accept);
         });
