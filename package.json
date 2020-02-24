@@ -1,0 +1,32 @@
+{
+  "name": "react-nextjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "buffer-image-size": "^0.6.4",
+    "image-size": "^0.8.3",
+    "imagemin": "^7.0.1",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-webp": "^5.1.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "jimp": "^0.9.3",
+    "next": "^9.2.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "redis": "^3.0.2",
+    "request": "^2.88.2",
+    "swr": "^0.1.17"
+  }
+}
