@@ -20,7 +20,7 @@ export default (req, res) => {
     .getImage(req)
     .then((data) => {
         //console.log("Data to serve: ", { data });
-        console.log({data});
+        //console.log({data});
         if(!data){  //If no image was generated
             res.setHeader('Content-Type', `image/png`);
             res.status(200).send(image_404);

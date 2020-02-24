@@ -16,7 +16,7 @@ export default function Index(props){
                 <br/>
                 <b>Resized Image</b>
                 <br/>
-                <img src="/api/imgmin?url=https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png&q1=0.3&q2=0.5"/>
+                <img src="/api/imgmin?url=https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png&q1=0.1&q2=0.2"/>
             </div>
         </div>
     );
