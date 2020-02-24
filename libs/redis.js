@@ -2,7 +2,7 @@ import * as redis from "redis";
 
 export class Redis {
     
-    async initialize(){
+    static async initialize(){
         if(global.initializing_redis) return;
         global.initializing_redis = true;
         global.redis = redis.createClient(6379, '0.0.0.0', {'return_buffers': true});
@@ -11,11 +11,11 @@ export class Redis {
         });
     }
 
-    get client(){
+    static get client(){
         return global.redis ? global.redis : null;
     }
 
-    async getValue(key = "string"){
+    static async getValue(key = "string"){
         let value = await new Promise((accept)=>{
             this.client.get(key, (err, data)=>{
                 accept(data);
@@ -24,7 +24,7 @@ export class Redis {
         return value;
     }
 
-    async setValue(key = "string", value){
+    static async setValue(key = "string", value){
         await new Promise((accept)=>{
             this.client.set(key, Buffer.from(value), accept);
         });
