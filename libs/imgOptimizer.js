@@ -16,6 +16,25 @@ export class ImageOptimizer {
         'jpg': [imageminJpegtran()],
         'webp': [imageminWebp({ quality: 40 })]
     }
+
+    getOptimizationPlugins(mimeType="png", q1, q2){
+        if(mimeType === 'png'){ //png takes two arguments, from 0.1 to 1
+            let _opt = [0.3, 0.5];
+            if(q1 > 0 && q1 <= 1){
+                _opt[0] = q1;
+            }
+            if(q2 > 0 && q2 <= 1 && q2 > _opt[1]){
+                _opt[1] = q2;
+            }
+            return [imageminPngquant({ strip: true, quality: _opt })];
+        }else if(mimeType === 'jpg'){   //
+            return [imageminJpegtran()];
+        }else if(mimeType === 'webp'){  //Webp images only accept from 1 to 100
+            if(q1 > 0 && q1 < 101){
+                return [imageminWebp({ quality: q1 })];
+            }
+        }
+    }
     
     mimeBuffers = {
         'png': Jimp.MIME_PNG,
@@ -85,7 +104,7 @@ export class ImageOptimizer {
             params: getImageOptimizationParams(req)
         });
         const { url, q1, q2, imgType, rw, rh } = getImageOptimizationParams(req);
-        let plugins = this.optPlugins[imgType];
+        let plugins = this.getOptimizationPlugins(imgType, q1, q2);
         if (plugins) {
             try {
                 let imgBuffer = await getImageAsBuffer(url);
